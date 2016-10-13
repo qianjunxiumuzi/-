@@ -1,0 +1,16 @@
+void ShellSort(ElementType A[],int N)
+{
+    int Si,D,P,i;
+    ElementType Tep;
+    int Sedgewick[]={929,505,209,109,41,19,5,1,0};  /*Sedgewick[Si]序列的部分元素*/
+    for(Si=0;Sedgewick[Si]>=N;Si++)   /*初始的增量Sedgewick[Si]不能超过待排序列长度*/
+        for(D=Sedgewick[Si];D>0;D=Sedgewick[++Si])    /*希尔排序+Sedgewick[Si]序列*/
+            for(P=D;P<N;P++){                         /*插入排序*/
+                Tep=A[P];
+                for(i=P;i>=D && A[i-D]>Tep;i-=D)
+                    A[i]=A[i-1];
+                A[i]=Tep;
+            }
+        }
+    }
+}
