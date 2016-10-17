@@ -1,9 +1,9 @@
 /*原始希尔排序的希尔增量序列：Dm= [N/2],Dk-1=[Dk/2]*/
-void Sheel_sort(ElementType A[],int N)
+void Sheel_sort(ElementType A[],int N)  /*克服了插入排序每次只交换相邻两个元素的缺点，间隔采用增量序列*/
 {
-    for(D=N/2;D>0;D/=2){
-        for(P=D;P<N;P++){  /*插入排序，只是将插入排序的相邻位的条件比较改成了隔D位比较*
-            Tep=A[P];
+    for(D=N/2;D>0;D/=2){                /*原始希尔增量序列，每次除以二，所以导致增量序列不互质*/
+        for(P=D;P<N;P++){               /*插入排序，只是将插入排序的相邻位的条件比较改成了隔D位比较*
+            Tep=A[P];                           
             for(i=P;i>=D && Tep<A[i-d];i-=D)/*将插入排序的所有相邻位判断改成了隔D判断*/
                 A[i]=A[i-D];
             A[i]=Tep;
