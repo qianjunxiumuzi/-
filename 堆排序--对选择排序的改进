@@ -1,0 +1,4 @@
+void Heap_Sort(ElementType A[],int N)
+{               /* */
+  BuideHeap(A）;
+  for
