@@ -1,0 +1,52 @@
+/*循环左移数组中P个元素，可以先将前P个元素逆置，再将剩下的元素逆置，再将整个数组逆置一遍，即可完成循环左移的操作*/
+#include<stdio.h>
+void Reverse( int a[],int l, int r)
+{
+  int i,j,tep;
+  for(i=l,j=r;i<j;i++,j--)
+  {
+     tep=a[i];
+     a[i]=a[j];
+     a[j]=tep;
+  }
+}
+
+void Interface(int a[],int n,int p)    /*接口函数的设计，所谓接口，就是要以计算机和用户沟通的角度去考虑程序怎么写，程序的交互性要好*/
+{                                      /*像本函数，用户只需知道输入一个数组以及需要循环左移的位数就行了，*/
+                                       /*而不需要知道这个程序是怎么运行的，要提供一个封装性很好的函数，让用户看不到程序的细节实现*/       
+  if(p<0 || p>n) printf("error\n");
+  else
+    {
+      Reverse(a,0,p-1);
+      Reverse(a,p,n-1);
+      Reverse(a,0,n-1);
+    }
+}
+void PrintA(int a[],int n)              /* 输出数组元素的函数，方便调用*/
+{
+  int i;
+  for(i=0;i<n;i++)
+    printf("%d\t",a[i]);
+  printf("\n");
+}
+
+int main()
+{
+  int i,n=0,p;
+  //int a[n];		/*变长数组在何处定义以及初始化的问题*/ 
+  printf("请输入数组元素个数:");
+  scanf("%d",&n);
+  int a[n];
+  printf("请输入数组元素：\n");
+  for(i=0;i<n;i++)
+	  scanf("%d",&a[i]);
+  printf("您输入的数组如下：\n");
+  PrintA(a,n);
+  printf("需要循环左移的位数：");
+  scanf("%d",&p);
+  Interface(a,n,p);
+  printf("新数组为：\n");
+  PrintA(a,n);
+  return 0;
+}
+  
